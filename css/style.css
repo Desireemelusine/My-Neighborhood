@@ -108,6 +108,11 @@ a[aria-expanded="true"] {
     background: #47748b;
 }
 
+input {
+  color: #47748b;
+  background: #fff;
+}
+
 /*--------googleMaps*/
 #content {
     width: 100%;
@@ -117,7 +122,7 @@ a[aria-expanded="true"] {
 }
 
 
-#map {  
+#map {
   min-height: 100vh;
 }
 
