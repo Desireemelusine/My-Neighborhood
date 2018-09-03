@@ -26,12 +26,12 @@
       <nav id="sidebar">
         <div class="sidebar-header"><h3>Exploring Campo de Ourique</h3></div>
         <ul class="list-unstyled components">
-          <p>Headings</p>
+          <p>Get to know the neighborhood! Here are our top 5 places in Campo De Ourique</p>
           <!-- active : current page -->
           <li class="active">
             <!-- data-toggle| collapse= to make dropdownmenu collapse + aria-expandend="false"= it will keep the dropdown list close and
           will see the triangle saying that there is dropdown list to open -->
-            <a href="#homeSubmenu" data-toggle="collapse" aria-expandend="false" class="dropdown-toggle">Home</a>
+            <a href="#homeSubmenu" data-toggle="collapse" aria-expandend="false" class="dropdown-toggle">Our Top 5!</a>
             <ul class="collapse list-unstyled" id="homeSubmenu">
               <li><strong>Supermarket
                 <input id="show-listings" type="button" value="Show">
@@ -41,42 +41,33 @@
             </ul>
           </li>
 
-          <li><a href="#">Distance</a></li>
-          <div>
-            <span class="text">You are here:</span>
-            <input id="search-within-time-text" type="text" placeholder="Address number, Lisboa">
-            <span class="text">Choose time and mode</>
-            <select id="max-duration">
-              <option value="15">15 min</option>
-              <option value="30">30 min</option>
-              <option value="45">45 min</option>
-              <option value="60">1 hour</option>
-            </select>
-            <select id="mode">
-              <option value="DRIVING">drive</option>
-              <option value="WALKING">walking</option>
-              <option value="TRANSIT">transit ride</option>
-            </select>
-            <span class="text">Check the nearest places
-            <input  id="search-within-time" type="button" value="Go">
-            </span>
-          </div>
-
-
-
-
-
-
-
-          <li><a href="#pageSubmenu" data-toggle="collapse" aria-expandend="false" class="dropdown-toggle">Pages</a>
+          <li><a href="#pageSubmenu" data-toggle="collapse" aria-expandend="false" class="dropdown-toggle">Directions</a>
             <ul class="collapse list-unstyled" id="pageSubmenu">
-              <li><a href="#">Page 1</a></li>
-              <li><a href="#">Page 2</a></li>
-              <li><a href="#">Page 3</a></li>
+              <li><span>You are here:</span>
+                <input id="search-within-time-text" type="text" placeholder="Address number, Lisboa">
+                <span class="text">Choose time and mode</>
+                <select id="max-duration">
+                  <option value="15">15 min</option>
+                  <option value="30">30 min</option>
+                  <option value="45">45 min</option>
+                  <option value="60">1 hour</option>
+                </select>
+                <select id="mode">
+                  <option value="DRIVING">drive</option>
+                  <option value="WALKING">walking</option>
+                  <option value="TRANSIT">transit ride</option>
+                </select>
+                <span class="text">Check the nearest places
+                <input  id="search-within-time" type="button" value="Go">
+                </span>
+              </li>
             </ul>
           </li>
 
-          <li><a href="#">Portfolio</a></li>
+          <li><p>Searching for something specific in Lisbon? Type here!</p>
+            <input id="places-search" type="text" placeholder="Ex: Portuguese Restaurant, Supermarket etc">
+            <input id="go-places" type="button" value="GO">
+          </li>
           <li><a href="#">Contact</a>  </li>
         </ul>
       </nav>
@@ -127,7 +118,7 @@
             });
         </script>
         <script async defer
-            src="https://maps.googleapis.com/maps/api/js?libraries=geometry&key=AIzaSyA0dcuJyRJYeOl5CqAerCyoi1hkitGF3HY&v=3&callback=initMap">
+            src="https://maps.googleapis.com/maps/api/js?libraries=places,geometry&key=AIzaSyA0dcuJyRJYeOl5CqAerCyoi1hkitGF3HY&v=3&callback=initMap">
         </script>
         <script src="js/main.js"></script>
   </body>
