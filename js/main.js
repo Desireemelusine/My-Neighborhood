@@ -104,6 +104,10 @@ function initMap() {
     document.getElementById('show-listings').addEventListener('click', showListings);
     document.getElementById('hide-listings').addEventListener('click', hideListings);
 
+    document.getElementById('search-within-time').addEventListener('click', function(){
+      searchWithinTime();
+    });
+
 }
 
   function populateInfoWindow(marker, infowindow){
@@ -176,6 +180,125 @@ function initMap() {
   }
 
 
+  /*This function allows the user write the address he is and based on select( time and mode(car, walk etc)),
+  he will know the nearest places for him to go
+  */
+  function searchWithinTime(){
+    //initialize the distance matrix service
+    var distanceMatrixService = new google.maps.DistanceMatrixService;
+    var address = document.getElementById('search-within-time-text').value;
+    // if it's blank, window appear if not then ...
+    if (address == ''){
+      window.alert('You must enter and address');
+    } else {
+      hideListings();
+      // Use the distance matrix service to calculate the duration of the
+      // routes between all our markers, and the destination address entered
+      // by the user. Then put all the origins into an origin matrix.
+      var origins = [];
+      for (var i = 0; i < markers.length; i++) {
+        origins[i] = markers[i].position;
+      }
+      var destination = address;
+      var mode = document.getElementById('mode').value;
+      // Now that both the origins and destination are defined, get all the
+      // info for the distances between them.
+      distanceMatrixService.getDistanceMatrix({
+        origins: origins,
+        destinations: [destination],
+        travelMode: google.maps.TravelMode[mode],
+        unitSystem: google.maps.UnitSystem.METRIC,
+      }, function(response, status) {
+        if (status !== google.maps.DistanceMatrixStatus.OK){
+          window.alert('Error was:' + status);
+        } else {
+          displayMarkersWithinTime(response);
+        }
+      });
+    }
+  }
+
+  /*if it's ok, then this function will display the criterias information by the user
+   This function will go through each of the results, and,if the distance is
+   LESS than the value in the picker, show it on the map.*/
+  function displayMarkersWithinTime(response) {
+    var maxDuration = document.getElementById('max-duration').value;
+    var origins = response.originAddresses;
+    var destinations = response.destinationAddresses;
+    // Parse through the results, and get the distance and duration of each.
+    // Because there might be  multiple origins and destinations we have a nested loop
+    // Then, make sure at least 1 result was found.
+    var atLeastOne = false;
+    for (var i = 0; i < origins.length; i++) {
+      var results = response.rows[i].elements;
+      for (var j = 0; j < results.length; j++) {
+        var element = results[j];
+        if (element.status === "OK") {
+          // The distance is returned in feet, but the TEXT is in miles. If we wanted to switch
+          // the function to show markers within a user-entered DISTANCE, we would need the
+          // value for distance, but for now we only need the text.
+          var distanceText = element.distance.text;
+          // durantion value is given in seconds, so we make it in MINUTES
+          var duration = element.duration.value / 60;
+          var durationText = element.duration.text;
+          if (duration <= maxDuration) {
+            markers[i].setMap(map);
+            atLeastOne = true;
+            // create mini window with info to open immediately and contain them
+            // distance and duration
+            var infowindow = new google.maps.InfoWindow({
+              content: ' You are ' + durationText + ' away. A total of  ' + distanceText +
+                '<div><input type=\"button\" value=\"View Route\" onclick =' +
+                '\"displayDirections(&quot;' + origins[i] + '&quot;);\"></input></div>'
+            });
+            infowindow.open(map, markers[i]);
+            // Put this in so that this small window closes if the user clicks
+            // the marker, when the big infowindow opens
+            markers[i].infowindow = infowindow;
+            google.maps.event.addListener(markers[i], 'click', function(){
+              this.infowindow.close();
+            });
+          }
+        }
+      }
+    }
+    if (!atLeastOne) {
+      window.alert('We could not find any locations within that distance!');
+    }
+  }
+
+  // This function represent the button "show route" follw by displayMarkersWithinTime
+  // where it calculates the distance. This will display the route
+  // on the map.
+  function displayDirections(origin) {
+    hideListings();
+    var directionsService = new google.maps.DirectionsService;
+    // get the destination address  from the user entered value
+    var destinationAddress =
+    document.getElementById('search-within-time-text').value;
+    //get mode again from the user entered value
+    var mode = document.getElementById('mode').value;
+    directionsService.route({
+      // the origin is the passed in marker's position.
+      origin: origin,
+      destination: destinationAddress,
+      travelMode: google.maps.TravelMode[mode]
+    }, function(response, status){
+      if(status === google.maps.DirectionsStatus.OK){
+        var directionsDisplay = new google.maps.DirectionsRenderer({
+          map: map,
+          directions: response,
+          // draggable: a rota pode ser arrastada
+          draggable: true,
+          polylineOptions: {
+            strokeColor: '#993366'
+          }
+        });
+      } else {
+        window.alert('Directions request failed due to ' + status);
+      }
+    });
+  }
 
  /*var celeiro = {lat: 38.718747, lng:-9.164838};
  // creating the marker to show on the map the locations

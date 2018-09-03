@@ -87,7 +87,7 @@ a[data-toggle="collapse"]{
 }
 
 #sidebar ul p {
-    color: #fff;
+    color: #47748b;
     padding: 10px;
 }
 
@@ -108,10 +108,19 @@ a[aria-expanded="true"] {
     background: #47748b;
 }
 
-input {
+input, select {
   color: #47748b;
   background: #fff;
+  font-size: 0.9em;
+  margin-left: 10px;
 }
+
+span {
+  padding: 10px;
+}
+
+
+
 
 /*--------googleMaps*/
 #content {
@@ -124,6 +133,11 @@ input {
 
 #map {
   min-height: 100vh;
+}
+
+#pano {
+  width: 200px;
+  height: 200px;
 }
 
 /* ---------------------------------------------------
