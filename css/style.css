@@ -108,7 +108,18 @@ a[aria-expanded="true"] {
     background: #47748b;
 }
 
+/*--------googleMaps*/
+#content {
+    width: 100%;
+    padding: 20px;
+    min-height: 100vh;
+    transition: all 0.3s;
+}
 
+
+#map {  
+  min-height: 100vh;
+}
 
 /* ---------------------------------------------------
     MEDIAQUERIES
