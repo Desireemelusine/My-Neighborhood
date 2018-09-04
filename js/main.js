@@ -368,7 +368,7 @@ function initMap() {
         icon: icon,
         title: place.name,
         position: place.geometry.location,
-        id:  place.id
+        id:  place.place_id
       });
       //CReate a single infowindow to be used with the place details information
       // so that only one is open at once
