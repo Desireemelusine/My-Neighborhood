@@ -42,8 +42,14 @@
             </ul>-->
 
             <a href="#homeSubmenu" data-toggle="collapse" aria-expandend="false" class="dropdown-toggle">Our Top 5!<input id="show-listings" type="button" value="Show"><input id="hide-listings" type="button" value="Hide"></a>
-            <ul class="collapse list-unstyled" id="homeSubmenu" data-bind="foreach:locationList">
-              <li data-bind="text: title, click: $parent.markerLocation">
+            <div class="filter-label">
+              <span>Search</span>
+              <input id="filter-text-box" class="text-input-box" type="text" placeholder="Ex: type here" data-bind="textInput: filter, valueUpdate: 'keydown'">
+              <br>
+            </div>
+            <div data-bind="foreach: filteredPlaces">
+            <ul class="collapse list-unstyled" id="homeSubmenu" data-bind="click: $root.showInfo">
+              <li data-bind="text: title">
                 <li><span data-bind="text: text"></span><br>
                     <span data-bind="text: street"></span>
                     <a data-bind="text: info, attr: {href: url}" target="_new"></a></li>
@@ -52,6 +58,7 @@
 
 
             </ul>
+          </div>
 
 
 
@@ -137,7 +144,7 @@
             src="https://maps.googleapis.com/maps/api/js?libraries=places,geometry&key=AIzaSyA0dcuJyRJYeOl5CqAerCyoi1hkitGF3HY&v=3&callback=initMap">
         </script>
         <script src="js/knockout-3.4.2.js"></script>
-        <script src="js/main.js"></script>
+        <script src="js/main2.js"></script>
 
   </body>
 </html>

@@ -54,11 +54,46 @@ var ViewModel = function(){
     self.locationList.push(new Location(locationItem));
   });
 
+
+  // Filters 'Top Places'.
+  self.filter = ko.observable('');
+  self.filteredPlaces = ko.computed(function() {
+      var filter = self.filter().toLowerCase();
+      if (!filter) {
+          self.locationList().forEach(function(loc) {
+              if (loc.marker) {
+                  loc.marker.setVisible(true);
+              }
+          });
+          return self.locationList();
+      } else {
+          return ko.utils.arrayFilter(self.locationList(), function(loc) {
+              if (loc.title.toLowerCase().indexOf(filter) > -1) {
+              //if (loc.title.indexOf(filter) > -1) {
+                  loc.marker.setVisible(true);
+                  return true;
+              } else {
+                  loc.marker.setVisible(false);
+                  return false;
+              }
+          });
+      }
+  }, self);
+
+  self.showInfo = function(location) {
+    console.log("click");
+      google.maps.event.trigger(location.marker, 'click');
+  };
+
+
+
+
+
   /* create this.currentLocation,becomes the one who will carry the locationList,
   it's the pointer with index O just to give access.
   I need to create this because we have an array of data and it will bring the
   location the user clicks*/
-  this.currentLocation = ko.observable (this.locationList()[0]);
+  //this.currentLocation = ko.observable (this.locationList()[0]);
 
   /*According to knockoutJS, when the user clicks, it automatically execute a function
   It will pass through the object(THE location) and for that specific location we will given
@@ -166,23 +201,20 @@ function initMap() {
     document.getElementById('places-search'));
   //Bias the searchBoxto wothin the bounds of the map
   searchBox.setBounds(map.getBounds());
-/*
-  // creating an array of locations on the map
-  var locations = [
-    {title: 'Celeiro Supermarket', location: {lat: 38.718747, lng: -9.164838}},
-    {title: 'Pingo Doce Supermarket', location: {lat: 38.718004, lng: -9.166404}},
-    {title: 'Go Natural Supermarket', location: {lat: 38.718789, lng: -9.168128}},
-    {title: 'Fruity & Fresh Supermarket', location: {lat: 38.720221, lng: -9.165792}},
-    {title: 'Pingo Doce Supermarket', location: {lat: 38.716160, lng: -9.163915}}
-  ];
-*/
+
   //creating info Window to show info about the marker place
   var largeInfowindow = new google.maps.InfoWindow();
+  var bounds = new google.maps.LatLngBounds();
 
 
   // marcadadore estilizados
   var defaultIcon = makeMarkerIcon('993366');
   var highlightedIcon = makeMarkerIcon('f7786b');
+
+
+
+
+
 
 
 
@@ -196,17 +228,22 @@ function initMap() {
     var title = dataLocations[i].title;
     // now we create a single marker for each position + title
     var marker = new google.maps.Marker({
-      //map:map, now on function showListings
+      map:map, //now on function showListings
       position: position,
       title: title,
       icon: defaultIcon,
       animation: google.maps.Animation.DROP,
       id: i
     });
+
+    // Attach the marker to the place object
+    vm.locationList()[i].marker = marker;
+
+
     //now we push the marker to our array of markers
     markers.push(marker);
     // extend bounds to each marker
-    //bounds.extend(marker.position); now on function showListings
+    bounds.extend(markers[i].position);  //now on function showListings
     // and we create the onclick event for the infowindow information
     marker.addListener('click', function() {
       populateInfoWindow(this, largeInfowindow);
@@ -222,13 +259,14 @@ function initMap() {
 
     }
     // fit the map on the bounds
-    //map.fitBounds(bounds); now on function showListings
+    map.fitBounds(bounds); //now on function showListings
+
 
     // Show and Hide Buttons
-   document.getElementById('show-listings').addEventListener('click', showListings);
+   //document.getElementById('show-listings').addEventListener('click', showListings);
    document.getElementById('hide-listings').addEventListener('click', function() {
    hideMarkers(markers);
-   });
+ });
 
     document.getElementById('search-within-time').addEventListener('click', function(){
       searchWithinTime();
@@ -287,7 +325,7 @@ function initMap() {
     infowindow.open(map, marker);
     }
   }
-
+/*
   function show(marker) {
     var bounds = new google.maps.LatLngBounds();
       markers[marker].setMap(map);
@@ -302,7 +340,7 @@ function initMap() {
       bounds.extend(markers[i].position);
     }
     map.fitBounds(bounds);
-  }
+  }*/
 
   function hideMarkers(markers) {
     for (var i = 0; i < markers.length; i++) {
@@ -562,4 +600,5 @@ function initMap() {
     });
   }
 /*----------------------------GOOGLEMAPS: END------------------------*/
+var vm = new ViewModel();
 ko.applyBindings(new ViewModel);
