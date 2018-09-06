@@ -7,6 +7,7 @@ var dataLocations = [
                     url: 'https://www.celeiro.pt/',
                     text: 'The perfect place for organic products, vegan, bio, etc.' ,
                     location: {lat: 38.718747, lng: -9.164838},
+                    markerId: null,
                   },
                   {
                     title: 'Pingo Doce',
@@ -15,6 +16,7 @@ var dataLocations = [
                     url: 'https://www.pingodoce.pt/',
                     text: 'Basic supermaket, medium size.',
                     location: {lat: 38.718004, lng: -9.166404},
+                    markerId: null,
                    },
                    {
                     title: 'Go Natural Supermarket',
@@ -23,6 +25,7 @@ var dataLocations = [
                     url: 'http://www.gonatural.pt/',
                     text: 'The perfect place for organic products, vegan, bio, etc.',
                     location: {lat: 38.718789, lng: -9.168128},
+                    markerId: null,
                   },
                   {
                     title: 'Fruity & Fresh Supermarket',
@@ -31,6 +34,7 @@ var dataLocations = [
                     url: 'https://pt-pt.facebook.com/fruityfreshmarket/',
                     text: 'The right place for fruits and vegetables' ,
                     location: {lat: 38.720221, lng: -9.165792},
+                    markerId: null,
                    },
                    {
                      title: 'Pingo Doce Supermarket',
@@ -39,6 +43,7 @@ var dataLocations = [
                      url: 'https://www.pingodoce.pt/',
                      text: 'Basic supermaket, medium-big size.',
                      location: {lat: 38.716160, lng: -9.163915},
+                     markerId: null,
                     }
                   ]
 
@@ -68,12 +73,12 @@ var ViewModel = function(){
           return self.locationList();
       } else {
           return ko.utils.arrayFilter(self.locationList(), function(loc) {
-              if (loc.title.toLowerCase().indexOf(filter) > -1) {
+              if (loc.title().toLowerCase().indexOf(filter) > -1) {
               //if (loc.title.indexOf(filter) > -1) {
-                  loc.marker.setVisible(true);
+                    markers[loc.markerId].setVisible(true);
                   return true;
               } else {
-                  loc.marker.setVisible(false);
+                markers[loc.markerId].setVisible(false);
                   return false;
               }
           });
@@ -82,7 +87,8 @@ var ViewModel = function(){
 
   self.showInfo = function(location) {
     console.log("click");
-      google.maps.event.trigger(location.marker, 'click');
+    show(markers[location.markerId]);
+      //google.maps.event.trigger(location.marker, 'click');
   };
 
 
@@ -140,6 +146,7 @@ var Location = function(data){
 
   //list of locations
   this.locations = ko.observableArray(data.locations);
+  this.markerId = ko.observable(data.markerId);
 
 
 };
@@ -228,7 +235,7 @@ function initMap() {
     var title = dataLocations[i].title;
     // now we create a single marker for each position + title
     var marker = new google.maps.Marker({
-      map:map, //now on function showListings
+      //map:map, //now on function showListings
       position: position,
       title: title,
       icon: defaultIcon,
@@ -237,13 +244,13 @@ function initMap() {
     });
 
     // Attach the marker to the place object
-    vm.locationList()[i].marker = marker;
+    vm.locationList()[i].markerId = marker.id;
 
 
     //now we push the marker to our array of markers
     markers.push(marker);
     // extend bounds to each marker
-    bounds.extend(markers[i].position);  //now on function showListings
+    //bounds.extend(markers[i].position);  //now on function showListings
     // and we create the onclick event for the infowindow information
     marker.addListener('click', function() {
       populateInfoWindow(this, largeInfowindow);
@@ -259,11 +266,11 @@ function initMap() {
 
     }
     // fit the map on the bounds
-    map.fitBounds(bounds); //now on function showListings
+    //map.fitBounds(bounds); //now on function showListings
 
 
     // Show and Hide Buttons
-   //document.getElementById('show-listings').addEventListener('click', showListings);
+   document.getElementById('show-listings').addEventListener('click', showListings);
    document.getElementById('hide-listings').addEventListener('click', function() {
    hideMarkers(markers);
  });
@@ -325,10 +332,10 @@ function initMap() {
     infowindow.open(map, marker);
     }
   }
-/*
+
   function show(marker) {
     var bounds = new google.maps.LatLngBounds();
-      markers[marker].setMap(map);
+      marker.setMap(map);
       bounds.extend(marker.position);
       map.fitBounds(bounds);
   }
@@ -340,7 +347,7 @@ function initMap() {
       bounds.extend(markers[i].position);
     }
     map.fitBounds(bounds);
-  }*/
+  }
 
   function hideMarkers(markers) {
     for (var i = 0; i < markers.length; i++) {
@@ -601,4 +608,4 @@ function initMap() {
   }
 /*----------------------------GOOGLEMAPS: END------------------------*/
 var vm = new ViewModel();
-ko.applyBindings(new ViewModel);
+ko.applyBindings(vm);
