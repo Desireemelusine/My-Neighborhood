@@ -93,7 +93,20 @@ a[data-toggle="collapse"]{
 
 #sidebar ul li a {
     padding: 10px;
-    font-size: 1.1em;
+    font-size: 1em;
+    display: block;
+}
+
+#sidebar span.link {
+  color: #999;
+    font-size: 0.8em;
+    display: inline-flex;
+}
+
+
+#sidebar .link {
+  color: #993366;
+    font-size: 0.8em;
     display: block;
 }
 
@@ -116,9 +129,16 @@ input, select {
 }
 
 span {
-  padding: 10px;
+  color: #999;
+  font-size: 0.9em;
 }
 
+
+
+#toggleBT {
+  color: #fff;
+  font-size: 0.9em;
+}
 
 
 

@@ -146,6 +146,7 @@ var Location = function(data){
 
   //list of locations
   this.locations = ko.observableArray(data.locations);
+  //
   this.markerId = ko.observable(data.markerId);
 
 
@@ -257,8 +258,15 @@ function initMap() {
     });
     //ICON change color add Listener
     marker.addListener('mouseover', function() {
+      var self = this;
       this.setIcon(highlightedIcon);
+      self.setAnimation(google.maps.Animation.BOUNCE);
+      setTimeout(function() {
+          self.setAnimation(null);
+          self.setIcon(defaultIcon);
+      }, 4900);
     });
+
     marker.addListener('mouseout', function() {
       this.setIcon(defaultIcon);
     });
@@ -290,7 +298,8 @@ function initMap() {
 
 }
 
-  function populateInfoWindow(marker, infowindow){
+  var weather = "Hello";
+  function populateInfoWindow(marker, infowindow, weather){
     //if infowindow from the marker is not open then: open, and create the content
     if (infowindow.marker != marker) {
       infowindow.marker = marker;
@@ -301,6 +310,8 @@ function initMap() {
       infowindow.addListener('closeclick', function(){
         infowindow.marker = null;
       });
+      }
+
       // adding street viewport
       var streetViewService = new google.maps.StreetViewService();
       //in case there is no image it will get the radius
@@ -330,7 +341,7 @@ function initMap() {
     streetViewService.getPanoramaByLocation(marker.position, radius, getStreetView);
       // Open the infowindow on the correct marker.
     infowindow.open(map, marker);
-    }
+
   }
 
   function show(marker) {

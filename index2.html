@@ -43,30 +43,31 @@
 
             <a href="#homeSubmenu" data-toggle="collapse" aria-expandend="false" class="dropdown-toggle">Our Top 5!<input id="show-listings" type="button" value="Show"><input id="hide-listings" type="button" value="Hide"></a>
             <div class="filter-label">
-              <span>Search</span>
+              <span>Filter :</span>
               <input id="filter-text-box" class="text-input-box" type="text" placeholder="Ex: type here" data-bind="textInput: filter, valueUpdate: 'keydown'">
               <br>
             </div>
             <div data-bind="foreach: filteredPlaces">
-            <ul class="collapse list-unstyled" id="homeSubmenu" data-bind="click: $root.showInfo">
-              <li data-bind="text: title">
-                <li><span data-bind="text: text"></span><br>
-                    <span data-bind="text: street"></span>
-                    <a data-bind="text: info, attr: {href: url}" target="_new"></a></li>
-                <hr>
-              </li>
-
-
-            </ul>
-          </div>
-
-
-
+              <ul class="collapse list-unstyled" id="homeSubmenu">
+                <li data-bind="text: title, click: $root.showInfo" >
+                  <li>
+                    <span data-bind="text: text"></span><br>
+                      <span data-bind="text: street"></span>
+                      <a class="link" data-bind="text: info, attr: {href: url}" target="_new"></a>
+                  </li><img class= "iconWeather" alt="weather">
+                  <span  class=" link apiWeather"></span>
+                  <span  class="link apiWeatherDetail"></span>
+                  <hr>
+                </li>
+              </ul>
+            </div>
           </li>
 
-          <li><a href="#pageSubmenu" data-toggle="collapse" aria-expandend="false" class="dropdown-toggle">Directions</a>
+          <li><a  href="#pageSubmenu" data-toggle="collapse" aria-expandend="false" class="dropdown-toggle">Directions</a>
             <ul class="collapse list-unstyled" id="pageSubmenu">
-              <li><span>You are here:</span>
+              <li>
+                <span> Let's check how far you are from Campo de Ourique and how to get there.</span><br>
+                <span>You are here:</span>
                 <input id="search-within-time-text" type="text" placeholder="Address number, Lisboa">
                 <span class="text">Choose time and mode</>
                 <select id="max-duration">
@@ -80,53 +81,40 @@
                   <option value="WALKING">walking</option>
                   <option value="TRANSIT">transit ride</option>
                 </select>
-                <span class="text">Check the nearest places
-                <input  id="search-within-time" type="button" value="Go">
+                <br>
+                <span>Check the nearest places
+                  <input  id="search-within-time" type="button" value="Go">
                 </span>
               </li>
             </ul>
           </li>
 
-          <li><p>Searching for something specific in Lisbon? Type here!</p>
-            <input id="places-search" type="text" placeholder="Ex: Portuguese Restaurant, Supermarket etc">
-            <input id="go-places" type="button" value="GO">
+          <li><a class="menu"  href="#pageSubmenu" data-toggle="collapse" aria-expandend="false" class="dropdown-toggle">Outside Campo de Ourique</a>
+            <ul class="collapse list-unstyled" id="pageSubmenu">
+              <li><span>Searching for something specific in Lisbon? Type here!</span>
+                <input id="places-search" type="text" placeholder="Ex: Portuguese Restaurant, Supermarket etc">
+                <input id="go-places" type="button" value="GO">
+              </li>
+            </ul>
           </li>
-          <li><img src="https://png.icons8.com/clouds/50/000000/temperature-outside.png">
-            <span id="apiCity"></span><br>
-            <span id="apiTemp"></span><br>
-            <span id="apiWind"></span><br>
-            <span id="apiHum"></span><br>
-            <span id="apiType"></span> </li>
-        </ul>
       </nav>
-      <!-- div for the  Sidebar button  + googleMaps map -->
+
+      <!-- div for the  Sidebar button  + googleMapsAPI -->
       <div id="content">
         <!-- Sidebar Toggle Button NEEDS TO BE OUTSIDE  the sidebar -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
           <div class="container-fluid">
-
+            <!-- sidebar button -->
             <button type="button" id="sidebarCollapse" class="btn btn-info">
               <i class="fas fa-align-left"></i>
               <span id="toggleBT">Neighborhood Campo de Ourique</span>
             </button>
           </div>
         </nav>
-        <!-- MODIFICATION fill with pure googlemaps -->
+        <!-- Pure googlemapsAPI -->
         <div id="map"></div>
-
       </div>
-
     </div>
-
-
-
-
-
-
-
-
-
-
 
 
 
