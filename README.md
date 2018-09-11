@@ -43,7 +43,7 @@ The third-party API is the weather based on the following link https://openweath
 
 
 #### Extra Info
- * Bootstrap - to create the view and to make the website responsive for laptops and mobile
+ * Bootstrap - to create the view, sidebar and to make the website responsive for laptops and mobile
  * jQuery was also necessary
  * Comments for each step were made for guiding me through all the coding process
 
