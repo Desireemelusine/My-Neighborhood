@@ -28,7 +28,8 @@
       <nav id="sidebar">
         <div class="sidebar-header"><h3>Exploring Campo de Ourique</h3></div>
         <ul class="list-unstyled components">
-          <p>Get to know the neighborhood! Here are our top 5 places in Campo De Ourique</p>
+          <p>Get to know the neighborhood! Here are our top 5 places in Campo De Ourique<input id="show-listings" type="button" value="Show on the Map"><input id="hide-listings" type="button" value="Hide"></p>
+
           <!-- active : current page -->
           <li class="active">
             <!-- data-toggle| collapse= to make dropdownmenu collapse + aria-expandend="false"= it will keep the dropdown list close and
@@ -41,23 +42,25 @@
               <li><a href="#">Restaurants</a></li>
             </ul>-->
 
-            <a href="#homeSubmenu" data-toggle="collapse" aria-expandend="false" class="dropdown-toggle">Our Top 5!<input id="show-listings" type="button" value="Show"><input id="hide-listings" type="button" value="Hide"></a>
+            <a href="#homeSubmenu" data-toggle="collapse" aria-expandend="false" class="dropdown-toggle">Our Top Places!</a>
             <div class="filter-label">
               <span>Filter :</span>
               <input id="filter-text-box" class="text-input-box" type="text" placeholder="Ex: type here" data-bind="textInput: filter, valueUpdate: 'keydown'">
               <br>
             </div>
             <div data-bind="foreach: filteredPlaces">
-              <ul class="collapse list-unstyled" id="homeSubmenu">
+              <ul class="list-unstyled" id="homeSubmenu">
                 <li data-bind="text: title, click: $root.showInfo" >
                   <li>
                     <span data-bind="text: text"></span><br>
-                      <span data-bind="text: street"></span>
-                      <a class="link" data-bind="text: info, attr: {href: url}" target="_new"></a>
-                  </li><img class= "iconWeather" alt="weather">
-                  <span  class=" link apiWeather"></span>
-                  <span  class="link apiWeatherDetail"></span>
-                  <hr>
+                    <span data-bind="text: street"></span>
+                    <a class="link" data-bind="text: info, attr: {href: url}" target="_new"></a>
+                  </li>
+                  <li>
+                    <img class= "iconWeather" alt="weather">
+                    <span  class="link apiWeather"></span>
+                    <hr>
+                  </li>
                 </li>
               </ul>
             </div>

@@ -1,50 +1,140 @@
 /*---------------------MODEL------------------------------------------ */
 var dataLocations = [
                   {
-                    title: 'Celeiro Supermarket',
+                    title: 'Supermarket Celeiro',
                     street: 'R. 4 de Infantaria 31B, 1350-166' ,
-                    info: 'Click here for more info',
+                    info: 'more info',
                     url: 'https://www.celeiro.pt/',
-                    text: 'The perfect place for organic products, vegan, bio, etc.' ,
+                    text: 'Organic products, vegan, bio, etc.' ,
                     location: {lat: 38.718747, lng: -9.164838},
                     markerId: null,
                   },
                   {
-                    title: 'Pingo Doce',
+                    title: 'Supermarket Pingo Doce',
                     street: 'R. Francisco Metrass 36, 1350-066',
-                    info: 'Click here for more info',
+                    info: 'more info',
                     url: 'https://www.pingodoce.pt/',
                     text: 'Basic supermaket, medium size.',
                     location: {lat: 38.718004, lng: -9.166404},
                     markerId: null,
                    },
                    {
-                    title: 'Go Natural Supermarket',
+                    title: 'Supermarket Go Natural',
                     street: 'R. Azedo Gneco 30, 1350-036',
-                    info: 'Click here for more info',
+                    info: 'more info',
                     url: 'http://www.gonatural.pt/',
-                    text: 'The perfect place for organic products, vegan, bio, etc.',
+                    text: 'Organic products, vegan, bio, etc.',
                     location: {lat: 38.718789, lng: -9.168128},
                     markerId: null,
                   },
                   {
-                    title: 'Fruity & Fresh Supermarket',
+                    title: 'Supermarket Fruity & Fresh',
                     street: 'R. Tomás da Anunciação 145, 1350-092',
-                    info: 'Click here for more info',
+                    info: 'more info',
                     url: 'https://pt-pt.facebook.com/fruityfreshmarket/',
-                    text: 'The right place for fruits and vegetables' ,
+                    text: 'Fresh fruits and vegetables' ,
                     location: {lat: 38.720221, lng: -9.165792},
                     markerId: null,
                    },
                    {
-                     title: 'Pingo Doce Supermarket',
+                     title: 'Supermarket Pingo Doce',
                      street: 'R. Ferreira Borges 14, 1350-096',
-                     info: 'Click here for more info',
+                     info: 'more info',
                      url: 'https://www.pingodoce.pt/',
                      text: 'Basic supermaket, medium-big size.',
                      location: {lat: 38.716160, lng: -9.163915},
                      markerId: null,
-                    }
+                   },
+                    {
+                      title: 'Pharmacy Linaida',
+                      street: 'R. Ferreira Borges 42-48, 1250-096' ,
+                      info: 'more info',
+                      url: 'https://www.farmaciaemcasa.pt/',
+                      text: 'Open on Saturdays and Sundays until 20h00' ,
+                      location: {lat: 38.716600, lng: -9.163978},
+                      markerId: null,
+                    },
+                    {
+                      title: 'Pharmacy Porfirio',
+                      street: 'R. Francisco Metrass 59, 1350-007',
+                      info: 'more info',
+                      url: 'http://www.farmaciasdeservico.net/f/18457/Farmacia_Porfirio/',
+                      text: 'This phamarcy is also open on Saturdays',
+                      location: {lat: 38.717175, lng: -9.166481},
+                      markerId: null,
+                     },
+                     {
+                      title: 'Park Jardim da Parada Teófilo Braga',
+                      street: 'R. Almeida e Sousa 27, 1350-162',
+                      info: 'more info',
+                      url: 'http://www.cm-lisboa.pt/equipamentos/equipamento/info/jardim-da-parada-jardim-teofilo-de-braga',
+                      text: 'There is a zone for kids to play and also a kiosk for hamburgers, drinks or just coffee',
+                      location: {lat: 38.717464, lng: -9.164973},
+                      markerId: null,
+                    },
+                    {
+                      title: 'Park Jardim dos Prazeres',
+                      street: 'Praça São João Bosco, 1350-295',
+                      info: 'more info',
+                      url: 'https://www.playocean.net/portugal/lisboa/jardins/jardim-da-parada-dos-prazeres',
+                      text: 'There is a zone for kids to play, a Dog park, Gym Circuit and also a kiosk for wine, coffee and bakery' ,
+                      location: {lat: 38.714522, lng: -9.169273},
+                      markerId: null,
+                     },
+                     {
+                       title: 'Fitness Fitness Hut',
+                       street: 'R. Ferreira Borges 14, 1350-096',
+                       info: 'more info',
+                       url: 'https://www.pingodoce.pt/',
+                       text: 'Basic supermaket, medium-big size.',
+                       location: {lat: 38.716160, lng: -9.163915},
+                       markerId: null,
+                     },
+                      {
+                        title: 'Fitness Box',
+                        street: 'R. 4 de Infantaria 31B, 1350-166' ,
+                        info: 'more info',
+                        url: 'https://www.celeiro.pt/',
+                        text: 'Organic products, vegan, bio, etc.' ,
+                        location: {lat: 38.718747, lng: -9.164838},
+                        markerId: null,
+                      },
+                      {
+                        title: 'Fitness Be Gym',
+                        street: 'R. Francisco Metrass 36, 1350-066',
+                        info: 'more info',
+                        url: 'https://www.pingodoce.pt/',
+                        text: 'Basic supermaket, medium size.',
+                        location: {lat: 38.718004, lng: -9.166404},
+                        markerId: null,
+                       },
+                       {
+                        title: 'Bakery ',
+                        street: 'R. Azedo Gneco 30, 1350-036',
+                        info: 'more info',
+                        url: 'http://www.gonatural.pt/',
+                        text: 'Organic products, vegan, bio, etc.',
+                        location: {lat: 38.718789, lng: -9.168128},
+                        markerId: null,
+                      },
+                      {
+                        title: 'Park Fruity & Fresh',
+                        street: 'R. Tomás da Anunciação 145, 1350-092',
+                        info: 'more info',
+                        url: 'https://pt-pt.facebook.com/fruityfreshmarket/',
+                        text: 'Fresh fruits and vegetables' ,
+                        location: {lat: 38.720221, lng: -9.165792},
+                        markerId: null,
+                       },
+                       {
+                         title: 'Fitness Pingo Doce',
+                         street: 'R. Ferreira Borges 14, 1350-096',
+                         info: 'more info',
+                         url: 'https://www.pingodoce.pt/',
+                         text: 'Basic supermaket, medium-big size.',
+                         location: {lat: 38.716160, lng: -9.163915},
+                         markerId: null,
+                        }
                   ]
 
 
@@ -60,21 +150,20 @@ var ViewModel = function(){
   });
 
 
-  // Filters 'Top Places'.
+  // Filter 'Top Places'.
   self.filter = ko.observable('');
   self.filteredPlaces = ko.computed(function() {
       var filter = self.filter().toLowerCase();
       if (!filter) {
           self.locationList().forEach(function(loc) {
               if (loc.marker) {
-                  loc.marker.setVisible(true);
+                loc.marker.setVisible(true);
               }
           });
           return self.locationList();
       } else {
           return ko.utils.arrayFilter(self.locationList(), function(loc) {
               if (loc.title().toLowerCase().indexOf(filter) > -1) {
-              //if (loc.title.indexOf(filter) > -1) {
                     markers[loc.markerId].setVisible(true);
                   return true;
               } else {
@@ -88,49 +177,7 @@ var ViewModel = function(){
   self.showInfo = function(location) {
     console.log("click");
     show(markers[location.markerId]);
-      //google.maps.event.trigger(location.marker, 'click');
   };
-
-
-
-
-
-  /* create this.currentLocation,becomes the one who will carry the locationList,
-  it's the pointer with index O just to give access.
-  I need to create this because we have an array of data and it will bring the
-  location the user clicks*/
-  //this.currentLocation = ko.observable (this.locationList()[0]);
-
-  /*According to knockoutJS, when the user clicks, it automatically execute a function
-  It will pass through the object(THE location) and for that specific location we will given
-  a random name. In this case getClickLocation, so it will get this location as current and show in the view*/
-  /*this.markerLocation = function(getClickLocation){
-    self.currentLocation(getClickLocation);
-    var pointer = markers[getClickLocation];
-    function() {
-      var bounds = new google.maps.LatLngBounds();
-        markers[pointer].setMap(map);
-        bounds.extend(pointer.position);
-        map.fitBounds(bounds);
-      }
-    }
-
-    //var pointer = markers.marker(getClickLocation);
-    console.log(getClickLocation);
-  };*/
-
-/*
-  self.openInfoWindow = function(location) {
-      google.maps.event.trigger(location.marker, 'click')
-  };*/
-
-  /* DO SOMETHING OR CONNECT WITH GOOGLEMAPS API SPECIFIC MARKER
-
-  this.pointLocation = function(){
-  self.currentLocation().location( show on the map)
-}
-
-  */
 
 };
 
@@ -141,14 +188,14 @@ var Location = function(data){
   this.info = ko.observable(data.info);
   this.url = ko.observable(data.url);
   this.text = ko.observable(data.text);
+
   // should this be the place to connect WITH GOOGLE?????
   this.location = ko.observable(data.location);
 
   //list of locations
   this.locations = ko.observableArray(data.locations);
-  //
+  //the individual marker:ID ( the current one)
   this.markerId = ko.observable(data.markerId);
-
 
 };
 
@@ -159,46 +206,43 @@ var Location = function(data){
 var map;
 // instead of one marker we create an Array due to the var locations
 var markers = [];
-
 // Create placemakers array to use in multiple functions to have Control
 //over the number os places that show ------  for SearchBox
 var placeMarkers = [];
 
 function initMap() {
+  // styling the map
   var styles = [
         {
           featureType: 'water',
-          //elementType: 'geometry.fill',
           stylers: [{color: '#78d0d1'}]
         },
         {
         featureType: 'road.highway',
         elementType: 'geometry',
         stylers: [{color: '#ebdbbf'}]
-      },
-      {
-          featureType: 'poi',
-          elementType: 'geometry',
-          stylers: [{color: '#5cc977'}]
         },
-      {
+        {
+        featureType: 'poi',
+        elementType: 'geometry',
+        stylers: [{color: '#5cc977'}]
+        },
+        {
         featureType: 'administrative.locality',
         elementType: 'labels.text.fill',
         stylers: [{color: '#cc8800'}]
-      },
-      {
+        },
+        {
         featureType: 'transit.station',
         elementType: 'labels.text.fill',
         stylers: [{color: '#d59563'}]
-      }
-  ];
-
-
+        }
+      ];
 
   //Creates a new map - center and zoom are required
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: 38.71765, lng: -9.1662076},
-    zoom: 17,
+    zoom: 16,
     styles: styles,
     mapTypeControl: false
   });
@@ -207,56 +251,52 @@ function initMap() {
   //Create the searchbox in order to execute a places search
   var searchBox = new google.maps.places.SearchBox(
     document.getElementById('places-search'));
-  //Bias the searchBoxto wothin the bounds of the map
+
+  //Bias the searchBoxto within the bounds of the map
   searchBox.setBounds(map.getBounds());
 
   //creating info Window to show info about the marker place
+  // large InfoWindow is the group of the each infowindow
   var largeInfowindow = new google.maps.InfoWindow();
+  //creating the bounds so all the markers fit on the page
   var bounds = new google.maps.LatLngBounds();
-
 
   // marcadadore estilizados
   var defaultIcon = makeMarkerIcon('993366');
   var highlightedIcon = makeMarkerIcon('f7786b');
 
-
-
-
-
-
-
-
-
-  //creating the bounds so all the markers fit on the page
-  //var bounds = new google.maps.LatLngBounds(); now on function showListings
   //let's create our markers locations array
   for (var i = 0; i < dataLocations.length; i++) {
     // getting the location and title
     var position = dataLocations[i].location;
     var title = dataLocations[i].title;
+    var textD = dataLocations[i].text;
     // now we create a single marker for each position + title
     var marker = new google.maps.Marker({
       //map:map, //now on function showListings
       position: position,
       title: title,
       icon: defaultIcon,
+      text: textD,
       animation: google.maps.Animation.DROP,
       id: i
     });
 
     // Attach the marker to the place object
+    // CONNECTION TO VIEWMODEL !!!! THIS WILL LINK WITH var vm = new ViewModel();
     vm.locationList()[i].markerId = marker.id;
-
 
     //now we push the marker to our array of markers
     markers.push(marker);
     // extend bounds to each marker
     //bounds.extend(markers[i].position);  //now on function showListings
     // and we create the onclick event for the infowindow information
+
+
     marker.addListener('click', function() {
       populateInfoWindow(this, largeInfowindow);
     });
-    //ICON change color add Listener
+    //ICON change color, animatio - add Listener
     marker.addListener('mouseover', function() {
       var self = this;
       this.setIcon(highlightedIcon);
@@ -271,7 +311,6 @@ function initMap() {
       this.setIcon(defaultIcon);
     });
 
-
     }
     // fit the map on the bounds
     //map.fitBounds(bounds); //now on function showListings
@@ -280,9 +319,10 @@ function initMap() {
     // Show and Hide Buttons
    document.getElementById('show-listings').addEventListener('click', showListings);
    document.getElementById('hide-listings').addEventListener('click', function() {
-   hideMarkers(markers);
- });
+     hideMarkers(markers);
+   });
 
+   // this is the button that will find the address to show the distance form point A to B
     document.getElementById('search-within-time').addEventListener('click', function(){
       searchWithinTime();
     });
@@ -298,13 +338,14 @@ function initMap() {
 
 }
 
-  var weather = "Hello";
+/*-------END OF function initMap()-----------------------------*/
+// populateInfoWindow will grab everything( all markers) + InfoWindow to show
   function populateInfoWindow(marker, infowindow, weather){
     //if infowindow from the marker is not open then: open, and create the content
     if (infowindow.marker != marker) {
       infowindow.marker = marker;
       infowindow.setContent('');
-      infowindow.setContent('<div>' + marker.title + '</div>');
+      infowindow.setContent('<div>' + marker.title + marker.text +'</div>');
       infowindow.open(map, marker);
       //close infowindow when closeclick
       infowindow.addListener('closeclick', function(){
@@ -322,7 +363,10 @@ function initMap() {
           var nearStreetViewLocation = data.location.latLng;
           var heading = google.maps.geometry.spherical.computeHeading(
             nearStreetViewLocation, marker.position);
-            infowindow.setContent('<div' + marker.title + '</div><div id="pano"></div>');
+            // here it will appear the infowindow with street view and extra personal(data)
+            /*for the marker.text (for example), you first need to announce on for (var i = 0; i < dataLocations.leng...
+             als inside   var marker = new google.maps.M .... adn on populateInfoWindow infowindow.setContent('<div>' + marker.title + marker.text +' ....*/
+            infowindow.setContent('<div id="pano"></div><div><span>' + marker.title + '<span><br>' + marker.text + '<br></div>');
             var panoramaOptions = {
               position: nearStreetViewLocation,
               pov: {
@@ -344,6 +388,7 @@ function initMap() {
 
   }
 
+  // each marker
   function show(marker) {
     var bounds = new google.maps.LatLngBounds();
       marker.setMap(map);
@@ -351,6 +396,7 @@ function initMap() {
       map.fitBounds(bounds);
   }
 
+  // all markers
   function showListings() {
     var bounds = new google.maps.LatLngBounds();
     for (var i = 0; i < markers.length; i++) {
@@ -360,13 +406,14 @@ function initMap() {
     map.fitBounds(bounds);
   }
 
+  // hide all markers
   function hideMarkers(markers) {
     for (var i = 0; i < markers.length; i++) {
         markers[i].setMap(null);
     }
   }
 
-
+  // Icon Color and style
   function makeMarkerIcon(markerColor) {
     var markerImage = new google.maps.MarkerImage(
       'http://chart.googleapis.com/chart?chst=d_map_spin&chld=1.15|0|'+ markerColor +
@@ -549,7 +596,7 @@ function initMap() {
         position: place.geometry.location,
         id:  place.place_id
       });
-      //CReate a single infowindow to be used with the place details information
+      //Create a single infowindow to be used with the place details information
       // so that only one is open at once
       var placeInfoWindow = new google.maps.InfoWindow();
       //if a marker is clicked, do a place details search on it in the next function
@@ -618,5 +665,7 @@ function initMap() {
     });
   }
 /*----------------------------GOOGLEMAPS: END------------------------*/
+/* we created the vm.locationList()[i].markerId = marker.id;
+this links  to the viewModel, so our ko.applyBindings needs to have as a parameter the vm*/
 var vm = new ViewModel();
 ko.applyBindings(vm);

@@ -42,8 +42,7 @@ a, a:hover, a:focus {
 
 
 
-/*-------Necessary to make it work the sidebar-------*/
-
+/*-------sidebar - necessary to make it work -------*/
 .wrapper {
   display: flex;
   width: 100%;
@@ -74,7 +73,8 @@ a[data-toggle="collapse"]{
   right: 20px;
   transform:  translateY(-50%);
 }
-/*---- extra style----*/
+
+/*-------- extra style----------*/
 #sidebar .sidebar-header {
     padding: 20px;
     background: #47748b;
@@ -98,11 +98,10 @@ a[data-toggle="collapse"]{
 }
 
 #sidebar span.link {
-  color: #999;
+    color: #999;
     font-size: 0.8em;
     display: inline-flex;
 }
-
 
 #sidebar .link {
   color: #993366;
@@ -125,7 +124,6 @@ input, select {
   color: #47748b;
   background: #fff;
   font-size: 0.9em;
-  margin-left: 10px;
 }
 
 span {
@@ -133,13 +131,10 @@ span {
   font-size: 0.9em;
 }
 
-
-
 #toggleBT {
   color: #fff;
   font-size: 0.9em;
 }
-
 
 
 /*--------googleMaps*/
@@ -150,7 +145,6 @@ span {
     transition: all 0.3s;
 }
 
-
 #map {
   min-height: 100vh;
 }
@@ -160,18 +154,18 @@ span {
   height: 200px;
 }
 
-/* ---------------------------------------------------
-    MEDIAQUERIES
------------------------------------------------------ */
+/* ------MEDIAQUERIES----------- */
 
 @media (max-width: 768px) {
     #sidebar {
-        margin-left: -250px;
+      margin-left: -250px;
     }
+
     #sidebar.active {
-        margin-left: 0;
+      margin-left: 0;
     }
+
     #sidebarCollapse span {
-        display: none;
+      display: none;
     }
 }
