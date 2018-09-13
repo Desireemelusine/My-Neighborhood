@@ -1,4 +1,9 @@
+// DOMContentLoaded : everytime the page makes a reload, he will grab this function again and refresh the information
+// this is how you connect with index
+document.addEventListener('DOMContentLoaded', apiWeather);
 
+// we create the  function to  assemble all this information
+function apiWeather() {
     //calling the  weather  third-party api
     var api = 'https://api.openweathermap.org/data/2.5/weather?q=Lisbon,pt&appid=5b3fd44bf7afb7ba0adacecea6b5616d';
     //jQuery - getJSON to get your API in your HTML
@@ -29,3 +34,5 @@
       //console.log(weather);
 
     });
+
+  }

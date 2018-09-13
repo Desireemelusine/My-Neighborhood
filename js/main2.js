@@ -68,7 +68,7 @@ var dataLocations = [
                       street: 'R. Almeida e Sousa 27, 1350-162',
                       info: 'more info',
                       url: 'http://www.cm-lisboa.pt/equipamentos/equipamento/info/jardim-da-parada-jardim-teofilo-de-braga',
-                      text: 'There is a zone for kids to play and also a kiosk for hamburgers, drinks or just coffee',
+                      text: 'Zone for kids to play and a great kiosk',
                       location: {lat: 38.717464, lng: -9.164973},
                       markerId: null,
                     },
@@ -77,7 +77,7 @@ var dataLocations = [
                       street: 'Praça São João Bosco, 1350-295',
                       info: 'more info',
                       url: 'https://www.playocean.net/portugal/lisboa/jardins/jardim-da-parada-dos-prazeres',
-                      text: 'There is a zone for kids to play, a Dog park, Gym Circuit and also a kiosk for wine, coffee and bakery' ,
+                      text: 'Zone for kids to play, a Dog park and Gym Circuit' ,
                       location: {lat: 38.714522, lng: -9.169273},
                       markerId: null,
                      },
@@ -113,7 +113,7 @@ var dataLocations = [
                         street: 'R. Correia Teles 56, 1350-102',
                         info: 'more info',
                         url: 'https://www.peixariadaesquina.com/',
-                        text: 'The best seafood and national fish in a unique place and environment',
+                        text: 'The best  place for seafood and national fish',
                         location: {lat: 38.719266, lng: -9.167362},
                         markerId: null,
                       },
@@ -171,6 +171,10 @@ var ViewModel = function(){
   // Filter 'Top Places'.
   self.filter = ko.observable('');
   self.filteredPlaces = ko.computed(function() {
+    // Here comes the func thirdy-party API  inside the filteredPlaces
+    // i could also put on the func initMap from googleapi but then I would need to
+    // erase from here and exclude the 1line form app.js.( document. addEventListener...)
+    apiWeather();
       var filter = self.filter().toLowerCase();
       if (!filter) {
           self.locationList().forEach(function(loc) {
