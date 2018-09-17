@@ -199,8 +199,9 @@ var ViewModel = function(){
   self.showInfo = function(location) {
     console.log("click");
     show(markers[location.markerId]);
-    /*marker.addListener('click', function() {
-      populateInfoWindow(this, largeInfowindow);
+    /* how to make ir open one  without the click?
+    marker.addListener('click', function() {
+    populateInfoWindow(this, largeInfowindow);
     });*/
   };
 
@@ -223,9 +224,6 @@ var Location = function(data){
   this.markerId = ko.observable(data.markerId);
 
 };
-
-
-
 
 /*----------------------------GOOGLEMAPS: START------------------------*/
 var map;

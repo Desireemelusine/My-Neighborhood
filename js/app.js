@@ -35,7 +35,7 @@ function apiWeather() {
       $(".apiWeather").html(city + ': ' + celsiusTemp + '°C'+ ' | ' + fahreTemp + '°F . ' + weatherType);
       //console.log(api);
       //console.log(weather);
-
+      // in case of error
     }).fail(setTimeout (function() {
         $(".apiWeather").html('Weather API Could Not Be Loaded');
     },10000));
