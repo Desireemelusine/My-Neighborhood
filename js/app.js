@@ -6,8 +6,11 @@ document.addEventListener('DOMContentLoaded', apiWeather);
 function apiWeather() {
     //calling the  weather  third-party api
     var api = 'https://api.openweathermap.org/data/2.5/weather?q=Lisbon,pt&appid=5b3fd44bf7afb7ba0adacecea6b5616d';
+    var success = false;
+
     //jQuery - getJSON to get your API in your HTML
     $.getJSON(api, function (data) {
+      success = true;
       var KelvinTemp, fahreTemp, celsiusTemp, weather;
       // tempExchange to exchange between Celsius and Fahrenheit;
       var tempExchange = true;
@@ -33,6 +36,8 @@ function apiWeather() {
       //console.log(api);
       //console.log(weather);
 
-    });
+    }).fail(setTimeout (function() {
+        $(".apiWeather").html('Weather API Could Not Be Loaded');
+    },10000));
 
   }

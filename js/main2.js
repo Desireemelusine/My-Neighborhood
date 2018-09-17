@@ -199,6 +199,10 @@ var ViewModel = function(){
   self.showInfo = function(location) {
     console.log("click");
     show(markers[location.markerId]);
+
+    /*marker.addListener('click', function() {
+      populateInfoWindow(this, largeInfowindow);
+    });*/
   };
 
 };
@@ -295,7 +299,7 @@ function initMap() {
     var textD = dataLocations[i].text;
     // now we create a single marker for each position + title
     var marker = new google.maps.Marker({
-      //map:map, //now on function showListings
+      map:map, //now on function showListings
       position: position,
       title: title,
       icon: defaultIcon,
@@ -311,11 +315,11 @@ function initMap() {
     //now we push the marker to our array of markers
     markers.push(marker);
     // extend bounds to each marker
-    //bounds.extend(markers[i].position);  //now on function showListings
+    bounds.extend(markers[i].position);  //now on function showListings
     // and we create the onclick event for the infowindow information
 
 
-    marker.addListener('click', function() {
+    marker.addListener('mouseover', function() {
       populateInfoWindow(this, largeInfowindow);
     });
     //ICON change color, animatio - add Listener
@@ -335,7 +339,7 @@ function initMap() {
 
     }
     // fit the map on the bounds
-    //map.fitBounds(bounds); //now on function showListings
+    map.fitBounds(bounds); //now on function showListings
 
 
     // Show and Hide Buttons
