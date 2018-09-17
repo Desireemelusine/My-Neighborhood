@@ -199,7 +199,6 @@ var ViewModel = function(){
   self.showInfo = function(location) {
     console.log("click");
     show(markers[location.markerId]);
-
     /*marker.addListener('click', function() {
       populateInfoWindow(this, largeInfowindow);
     });*/
