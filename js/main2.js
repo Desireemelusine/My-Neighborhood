@@ -199,10 +199,6 @@ var ViewModel = function(){
   self.showInfo = function(location) {
     console.log("click");
     show(markers[location.markerId]);
-    /* how to make ir open one  without the click?
-    marker.addListener('click', function() {
-    populateInfoWindow(this, largeInfowindow);
-    });*/
   };
 
 };
@@ -316,7 +312,7 @@ function initMap() {
     // and we create the onclick event for the infowindow information
 
 
-    marker.addListener('mouseover', function() {
+    marker.addListener('click', function() {
       populateInfoWindow(this, largeInfowindow);
     });
     //ICON change color, animatio - add Listener
